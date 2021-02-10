@@ -1,35 +1,13 @@
-const mysql = require("mysql");
+require("dotenv").config();
 
-// Database Connection for Production
+const { Pool } = require("pg");
+const isProduction = process.env.NODE_ENV === "production";
 
-// let config = {
-//     user: process.env.SQL_USER,
-//     database: process.env.SQL_DATABASE,
-//     password: process.env.SQL_PASSWORD,
-// }
+const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`;
 
-// if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
-//   config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
-// }
-
-// let connection = mysql.createConnection(config);
-
-// Database Connection for Development
-
-let connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASS,
+const pool = new Pool({
+  connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
+  ssl: isProduction ? { rejectUnauthorized: false } : false,
 });
 
-// console.log(connection);
-
-connection.connect(function (err) {
-  if (err) {
-    console.error("Error connecting: " + err.stack);
-    return;
-  }
-  console.log("Connected as thread id: " + connection.threadId);
-});
-module.exports = connection;
+module.exports = { pool };
