@@ -35,19 +35,15 @@ import Card from "./Card";
 //   },
 // ];
 
-const getMemes = async () => {
-  let res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`);
-  return res.data;
-};
-
 export default function Home() {
   const [memes, setMemes] = useState([]);
-  let res;
+  const getMemes = async () => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}`)
+      .then((res) => setMemes(res.data));
+  };
 
-  useEffect(async (memes) => {
-    res = await getMemes();
-    if (res.length > 0) setMemes(res);
-  }, []);
+  useEffect(() => getMemes(), []);
 
   return (
     <div>
@@ -87,6 +83,7 @@ export default function Home() {
               });
               setSubmitting(false);
               setFieldValue("success", true);
+              getMemes();
               setTimeout(() => resetForm(), 8000);
             } catch (err) {
               setSubmitting(false);
@@ -169,16 +166,17 @@ export default function Home() {
         </Formik>
       </Wrapper>
       <div className="card-container">
-        {memes.map((meme, index) => {
-          return (
-            <Card
-              key={index}
-              name={meme.name}
-              url={meme.url}
-              caption={meme.caption}
-            />
-          );
-        })}
+        {memes &&
+          memes.map((meme, index) => {
+            return (
+              <Card
+                key={index}
+                name={meme.name}
+                url={meme.url}
+                caption={meme.caption}
+              />
+            );
+          })}
       </div>
     </div>
   );
