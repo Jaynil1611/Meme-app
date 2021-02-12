@@ -46,7 +46,7 @@ export default function Home() {
 
   useEffect(async (memes) => {
     res = await getMemes();
-    setMemes(res);
+    if (res.length > 0) setMemes(res);
   }, []);
 
   return (
