@@ -6,7 +6,7 @@ const Card = ({ name, url, caption }) => {
     <div className="city">
       <a href={url}>
         <div className="city-image">
-          <img class="card-img" src={url} alt="meme" />
+          <img className="card-img" src={url} alt="meme" />
         </div>
       </a>
       <div className="description">

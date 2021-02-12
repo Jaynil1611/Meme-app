@@ -58,10 +58,10 @@ body {
 }
 
 .city-image img {
-  display: block;
+  display: flex;
   margin: 0 auto;
-  max-width: 100%;
-  height: auto;
+  flex: 1.3344;
+  width: 100%;
 }
 
 a {
