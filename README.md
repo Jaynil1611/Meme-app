@@ -3,7 +3,7 @@
 ## Introduction
 
 This repository consists of backend and frontend code of meme streaming application. It is hosted on Vercel and Heroku
-It is made using `HTML, CSS, JavaScript, React, Node, Express, PostgreSQL` to design and develop this application.
+It is made using `HTML, CSS, JavaScript, React, Node, Express, PostgreSQL`  to design and develop this application.
 
 ## Live Demo
 
