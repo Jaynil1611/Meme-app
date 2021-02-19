@@ -7,6 +7,8 @@ It is made using `HTML, CSS, JavaScript, React, Node, Express, PostgreSQL` to de
 
 ## Live Demo
 
+View the recorded video of the application here 👉 [meme-app](https://youtu.be/Jy9TqDegyFI)
+
 View the live demo of the application here 👉 [meme-stream](https://meme-app.jaynil1611.vercel.app/)
 
 Backend is hosted on Heroku app 👉 [heroku-backend](https://xmeme-0.herokuapp.com/memes)
