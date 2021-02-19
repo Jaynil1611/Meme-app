@@ -1,2 +1,3 @@
-# meme-app
-Created with CodeSandbox
+## meme-backend
+
+- Made using `Node JS, Express JS & PostgreSQL `

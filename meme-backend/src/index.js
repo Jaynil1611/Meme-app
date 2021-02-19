@@ -15,7 +15,7 @@ app.get("/memes", function (req, res) {
     function (error, results) {
       if (error) throw error;
       if (results.rows.length === 0)
-        return res.status(404).send("There are no memes found!");
+        return res.status(404).send(results.rows);
       res.status(200).json(results.rows);
     }
   );
